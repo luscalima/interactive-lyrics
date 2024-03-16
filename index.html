@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>interactive lyrics</title>
+    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>interactive lyrics</h1>
+      </header>
+      <div class="lyrics-controls">
+        <form class="lyrics-form">
+          <input class="lyrics-input" type="file" />
+        </form>
+        <div class="lyrics-actions">
+          <button class="btn-play"><i class="ph-fill ph-play"></i></button>
+        </div>
+      </div>
+      <main>
+        <section class="lyrics-display"></section>
+      </main>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
