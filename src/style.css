@@ -7,7 +7,7 @@
   --gray-light: #e4e4e7;
   --light: #fafafa;
   --dark: #0f172a;
-  --cyan: #0891b2;
+  --amber: #fbbf24;
 }
 
 * {
@@ -36,9 +36,13 @@ h6 {
   line-height: 1.2;
 }
 
+strong {
+  font-weight: 500;
+}
+
 #app {
   height: 100vh;
-  background-color: var(--cyan);
+  background-color: var(--gray-dark);
 }
 
 /* ---------- Area: Musics ---------- */
@@ -90,7 +94,8 @@ main {
   overflow: hidden;
 }
 
-.musics .list .music .cover img {
+.musics .list .music .cover img,
+.music-panel .music-cover img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -103,22 +108,136 @@ main {
   font-size: 0.85rem;
 }
 
-.lyrics-controls button {
+/* ---------- Area: Panel ---------- */
+
+.music-panel {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  height: 7rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  color: var(--light);
+}
+
+.music-panel .music-infos,
+.music-panel .music-volume {
+  display: flex;
+  width: 25rem;
+  padding: 0 2rem;
+  align-items: center;
+}
+
+.music-infos {
+  gap: 1rem;
+}
+
+.music-infos .music-cover {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 0.25rem;
+  background-color: var(--gray);
+  overflow: hidden;
+}
+
+.music-infos .music-title p {
+  font-size: 0.8rem;
+  color: var(--gray-light);
+}
+
+.music-controls {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.music-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.music-actions button {
   display: flex;
   width: 2.5rem;
   height: 2.5rem;
   justify-content: center;
   align-items: center;
-  background-color: var(--light);
-  color: var(--black);
+  color: var(--light);
   border: none;
   border-radius: 50%;
   cursor: pointer;
+  background-color: transparent;
   transition: all 0.1s linear;
   font-size: 1.25rem;
 }
 
-.lyrics-controls .lyrics-actions {
+.music-actions .btn-play {
+  background-color: var(--light);
+  color: var(--black);
+}
+
+.music-actions .btn-play:hover {
+  transform: scale(1.1);
+}
+
+.music-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  font-size: 0.75rem;
+  color: var(--gray);
+}
+
+.music-progress span {
+  width: 2rem;
+}
+
+.progress-bar {
+  position: relative;
+  width: 100%;
+  height: 0.25rem;
+  background-color: var(--gray);
+  border-radius: 0.25rem;
+}
+
+.progress-bar:hover .progress {
+  background-color: var(--amber);
+}
+
+.progress-bar:hover .slider {
+  display: block;
+}
+
+.progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: var(--light);
+  border-radius: 0.25rem;
+}
+
+.progress .slider {
+  position: absolute;
+  display: none;
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+  width: 0.7rem;
+  height: 0.7rem;
+  background-color: var(--light);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.1);
+}
+
   display: flex;
   justify-content: space-between;
   width: 100%;
