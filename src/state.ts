@@ -1,3 +1,16 @@
+export interface Music {
+  id: string
+  title: string
+  audio: string
+  lyric: string
+  cover: string
+  artist: string
+  album: string
+  year: number
+  duration: string
+  genre: string
+}
+
 export interface Track {
   time: number
   text: string
@@ -5,6 +18,8 @@ export interface Track {
 }
 
 export interface State {
+  music: Music | null
+  musics: Music[]
   tracks: Track[]
   currentTrack: number
   elapsedTime: number
@@ -15,6 +30,8 @@ type Listener<K extends keyof State> = (state: State, value: State[K]) => any
 let trackInterval = 0
 const TRACK_TIME_INTERVAL = 20
 const listeners: Record<keyof State, Listener<any>[]> = {
+  music: [],
+  musics: [],
   tracks: [],
   elapsedTime: [],
   currentTrack: [],
@@ -22,6 +39,8 @@ const listeners: Record<keyof State, Listener<any>[]> = {
 
 export const state = new Proxy<State>(
   {
+    music: null,
+    musics: [],
     tracks: [],
     elapsedTime: 0,
     currentTrack: -1,
